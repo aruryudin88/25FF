@@ -1,0 +1,42 @@
+en:
+  hello: hello
+  save: save
+  activerecord:
+    models:
+      cinematograph: cinematograph
+      director: director
+      distributor: distributor
+      editor: editor
+      film: film
+      locale_name: my language
+      musican: musican
+      producer: producer
+      star: star
+      storyteller: storyteller
+      user: user
+      writer: writer
+    attributes:
+      film:
+        name: name
+        description: description
+        premiere: premiere
+        usa_premiere: USA premiere
+        genre: genre
+        running_time: running time
+        country: country
+        language: original language
+        budget: budget
+        box_office: box office
+        file_path: file path
+      user:
+        name: name
+        surename: surename
+  controllers:
+    films:
+      index: films list
+      show: show film
+      new: new film
+      create: film created
+      edit: edit film
+      update: film updated
+      destroy: film destroyed

@@ -1,0 +1,42 @@
+ru:
+  hello: привет
+  save: сохранить
+  activerecord:
+    models:
+      cinematograph: оператор
+      director: режиссёр
+      distributor: кинокомпания
+      editor: редактор
+      film: фильм
+      locale_name: мой язык (language)
+      musican: композитор
+      producer: продюсер
+      star: главный герой
+      storyteller: рассказчик
+      user: пользователь
+      writer: автор
+    attributes:
+      film:
+        name: название
+        description: описание
+        premiere: премьера
+        usa_premiere: премьера в США
+        genre: жанр
+        running_time: продолжительность
+        country: страна
+        language: оригинальный язык
+        budget: бюджет
+        box_office: сборы
+        file_path: путь к файлу
+      user:
+        name: имя
+        surename: фамилия
+  controllers:
+    films:
+      index: список фильмов
+      show: просмотр фильма
+      new: новый фильм
+      create: фильм создан
+      edit: изменить фильм
+      update: фильм изменён
+      destroy: фильм удалён
