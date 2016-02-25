@@ -5,11 +5,18 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   
   def set_locale
-    I18n.locale = cookies["locale"] || extract_locale_from_accept_language_header
+    I18n.locale = cookies["locale"] ||
+                  extract_locale_from_accept_language_header ||
+                  I18n.default_locale
+  end
+  
+  def redirect_to_films_path
+    redirect_to '/films/'
   end
  
-private
+  private
+  
   def extract_locale_from_accept_language_header
-    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    request.env['HTTP_ACCEPT_LANGUAGE'].try(:scan, /^[a-z]{2}/).try(:first)
   end
 end

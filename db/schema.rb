@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213194010) do
+ActiveRecord::Schema.define(version: 20160218072643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,10 +35,20 @@ ActiveRecord::Schema.define(version: 20160213194010) do
     t.datetime "updated_at",            null: false
   end
 
+  create_table "directors_films", id: false, force: :cascade do |t|
+    t.integer "film_id",     null: false
+    t.integer "director_id", null: false
+  end
+
   create_table "distributors", force: :cascade do |t|
     t.string   "name",       limit: 70
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+  end
+
+  create_table "distributors_films", id: false, force: :cascade do |t|
+    t.integer "film_id",        null: false
+    t.integer "distributor_id", null: false
   end
 
   create_table "editors", force: :cascade do |t|
@@ -46,6 +56,11 @@ ActiveRecord::Schema.define(version: 20160213194010) do
     t.string   "surename",   limit: 35
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+  end
+
+  create_table "editors_films", id: false, force: :cascade do |t|
+    t.integer "film_id",   null: false
+    t.integer "editor_id", null: false
   end
 
   create_table "films", force: :cascade do |t|
@@ -62,21 +77,6 @@ ActiveRecord::Schema.define(version: 20160213194010) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.string   "file_path",    limit: 70
-  end
-
-  create_table "films_directors", id: false, force: :cascade do |t|
-    t.integer "film_id",     null: false
-    t.integer "director_id", null: false
-  end
-
-  create_table "films_distributors", id: false, force: :cascade do |t|
-    t.integer "film_id",        null: false
-    t.integer "distributor_id", null: false
-  end
-
-  create_table "films_editors", id: false, force: :cascade do |t|
-    t.integer "film_id",   null: false
-    t.integer "editor_id", null: false
   end
 
   create_table "films_musicans", id: false, force: :cascade do |t|

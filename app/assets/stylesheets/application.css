@@ -21,7 +21,7 @@ input, textarea {
   border: 1px solid #d9d9d9;
   padding: 9px;
 }
-body { font-family: monospace; margin-top: 56px; font-size: 13px; }
+body { font-family: monospace; margin: 0; margin-top: 56px; font-size: 13px; }
 #menu {
   background: #222;
   padding: 8px;
@@ -39,3 +39,9 @@ body { font-family: monospace; margin-top: 56px; font-size: 13px; }
 #locale_box > div { text-align: center; margin-bottom: 5px; }
 form { position: absolute; left: 0; }
 form > p { background: #f1f1f1; border: 1px solid #ebebeb; padding: 10px; }
+#error_explanation{
+  padding: 25px;
+  background: #58494B;
+  color: #E94F64;
+  b{ color: #F4AAB4; }
+}

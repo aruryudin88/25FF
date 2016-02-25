@@ -16,7 +16,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+# Turbolinks makes following links in your web application faster.
+# Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -26,6 +27,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails-i18n'
 # detec user browser
 gem 'browser'
+# Dalli is a high performance pure Ruby client for accessing memcached servers.
+# It works with memcached 1.4+ only as it uses the newer binary protocol.
+# It should be considered a replacement for the memcache-client gem.
+gem 'dalli', require: 'action_dispatch/middleware/session/dalli_store'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -40,16 +45,13 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails'
-end
-
-group :test do
   gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  gem 'email_spec'
-  gem 'timecop'
-  gem 'launchy'
-  gem 'cucumber-rails'
+  gem 'rails-perftest'
+  gem 'ruby-prof'
 end
 
 group :development do

@@ -31,6 +31,9 @@ en:
       user:
         name: name
         surename: surename
+    errors:
+      messages:
+        invalid: is invalid
   controllers:
     films:
       index: films list

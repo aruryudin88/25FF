@@ -1,8 +1,0 @@
-<% @films.each do |film| %>
-  <% film.class.presentative_attributes.each do |attribute| %>
-    <%= content_tag :p do %>
-      <%= label_tag attribute %>
-      <%= film.custom_field(attribute, self) %>
-    <% end %>
-  <% end %>
-<% end %>

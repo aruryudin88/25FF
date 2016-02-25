@@ -1,0 +1,11 @@
+<%= form_for @resource do |f| %>
+  <% @resource.class.presentative_attribute_names.each do |attribute| %>
+    <%= content_tag :p do %>
+      <%= f.label attribute %>:
+      <%= @resource.custom_field(attribute, f) %>
+    <% end %>
+  <% end %>
+  <%= content_tag :p do %>
+    <%= f.submit %>
+  <% end %>
+<% end %>

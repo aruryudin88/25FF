@@ -9,5 +9,8 @@ class Film < ActiveRecord::Base
   has_and_belongs_to_many :stars
   has_and_belongs_to_many :storytellers
   has_and_belongs_to_many :writers
-  include Form
+  include ForForms
+  include ForTests if Rails.env == "test"
+  validates :name, presence: true, length: { maximum: 70 }, uniqueness: true
+  validates :description, length: { maximum: 65536 }
 end

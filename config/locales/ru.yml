@@ -31,6 +31,9 @@ ru:
       user:
         name: имя
         surename: фамилия
+    errors:
+      messages:
+        invalid: имеет неверное значение или формат
   controllers:
     films:
       index: список фильмов

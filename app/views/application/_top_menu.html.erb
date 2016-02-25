@@ -1,11 +1,16 @@
 <%= content_tag "div", id: "menu" do %>
   <%= image_tag "logo.#{browser.modern? ? "svg" : "png"}", id: "logo" %>
   <%= image_tag "eyes.#{browser.modern? ? "svg" : "png"}", id: "eyes" %>
-  <%= content_tag "span", t(action_name, scope: ["controllers", controller_name]), id: "page_title" %>
+  <%= content_tag "span",
+                  t(action_name, scope: ["controllers", controller_name]),
+                  id: "page_title" %>
   <%= content_tag "span", id: "locale_box" do %>
     <%= content_tag "div"  do %>
       <%= label_tag "application[locale]", LocaleName.model_name.human %>
     <% end %>
-    <%= select "application", "locale", locales_for_select, include_blank: true, selected: I18n.locale %>
+    <%= select "application",
+               "locale",
+               locales_for_select,
+               include_blank: true, selected: I18n.locale %>
   <% end %>
 <% end %>

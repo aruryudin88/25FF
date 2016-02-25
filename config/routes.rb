@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root 'films#index'
+  root 'application#redirect_to_films_path'
 
-  resources :films, :users
+  resources :films, controller: 'resources'
+  resources :users, controller: 'resources'
 
   # Example resource route with sub-resources:
   #   resources :products do
