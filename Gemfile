@@ -31,15 +31,15 @@ gem 'browser'
 # It works with memcached 1.4+ only as it uses the newer binary protocol.
 # It should be considered a replacement for the memcache-client gem.
 gem 'dalli', require: 'action_dispatch/middleware/session/dalli_store'
+# Provides a full set of stores (Cache, Session, HTTP Cache) for Ruby on Rails.
+# See the main redis-store readme for general guidelines.
+gem "redis-rails"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'unicorn'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -57,8 +57,9 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # Use Capistrano for deployment
+  gem 'capistrano-rails'
 end
 

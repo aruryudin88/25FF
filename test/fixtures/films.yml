@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  premiere: 2016-02-13
+  us_premiere: 2016-02-13
+  genre: MyString
+  running_time: 1
+  country: MyString
+  language: MyString
+  budget: 
+  box_office: 
+
+two:
+  name: MyString
+  description: MyText
+  premiere: 2016-02-13
+  us_premiere: 2016-02-13
+  genre: MyString
+  running_time: 1
+  country: MyString
+  language: MyString
+  budget: 
+  box_office: 

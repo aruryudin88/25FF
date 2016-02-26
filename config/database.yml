@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: socifilm_development
+  database: THE25FF_development
   user: rails
   password: rails
 
@@ -52,7 +52,7 @@ test: &test
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: socifilm_test
+  database: THE25FF_test
   user: rails
   password: rails
 
@@ -77,9 +77,9 @@ test: &test
 #
 production:
   <<: *default
-  database: socifilm_production
-  username: socifilm
-  password: <%= ENV['SOCIFILM_DATABASE_PASSWORD'] %>
+  database: THE25FF_production
+  username: rails
+  password: <%= ENV['THE25FF_DATABASE_PASSWORD'] %>
 
 cucumber:
   <<: *test
