@@ -258,3 +258,4 @@ LocaleName.create([
   { tag: "zu", name: "Zulu" },
   { tag: "zu-ZA", name: "Zulu (South Africa)" },
 ])
+

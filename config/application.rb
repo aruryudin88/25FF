@@ -8,12 +8,12 @@ Bundler.require(*Rails.groups)
 
 module THE25FF
   class Application < Rails::Application
-    config.cache_store = :redis_store, host: "localhost",
-                                       port: 6379,
-                                       db: 0,
-                                       password: nil,
-                                       namespace: "cache",
-                                       expires_in: 90.minutes
+    config.cache_store = :redis_store, { host: "localhost",
+                                         port: 6379,
+                                         db: 0,
+                                         password: nil,
+                                         namespace: "cache",
+                                         expires_in: 90.minutes }
     
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

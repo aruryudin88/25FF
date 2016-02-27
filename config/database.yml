@@ -81,5 +81,3 @@ production:
   username: rails
   password: <%= ENV['THE25FF_DATABASE_PASSWORD'] %>
 
-cucumber:
-  <<: *test

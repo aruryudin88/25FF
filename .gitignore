@@ -13,3 +13,4 @@
 /tmp
 *.swp
 .DS_Store
+/db/private_seed.rb

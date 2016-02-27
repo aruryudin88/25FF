@@ -1,4 +1,4 @@
-module ActiveRecordBaseExtension  
+module ActiveRecordBaseExtension1
   extend ActiveSupport::Concern
   SERVICE_ATTRIBUTES = %w(id created_at updated_at)
   
@@ -16,9 +16,9 @@ module ActiveRecordBaseExtension
     end
   end
 end
-ActiveRecord::Base.send(:include, ActiveRecordBaseExtension)
+ActiveRecord::Base.send(:include, ActiveRecordBaseExtension1)
 
-module ActiveRecordConnectionAdaptersColumnExtension
+module ActiveRecordConnectionAdaptersColumnExtension1
   extend ActiveSupport::Concern
   DATA_TYPES = { string: 32, text: 65000 }
   
@@ -30,4 +30,7 @@ module ActiveRecordConnectionAdaptersColumnExtension
     @max_length_by_type ||= DATA_TYPES[type]
   end
 end
-ActiveRecord::ConnectionAdapters::Column.send(:include, ActiveRecordConnectionAdaptersColumnExtension)
+ActiveRecord::ConnectionAdapters::Column.send(
+  :include,
+  ActiveRecordConnectionAdaptersColumnExtension1
+)
