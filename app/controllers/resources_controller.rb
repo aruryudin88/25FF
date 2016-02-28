@@ -19,6 +19,12 @@ class ResourcesController < ApplicationController
 
   def create
     @resource = model.create_with_attachments resource_params
+    if @resource.valid?
+      flash[:notice] = t("controllers.#{model.name.tableize}.#{__method__}")
+    else
+      session[:resource_errors] = @resource.errors
+    end
+    redirect_to action: :new
   end
 
   def edit
@@ -34,15 +40,6 @@ class ResourcesController < ApplicationController
   
   def resource_params
     params[model.name.downcase].permit(model.presentative_attribute_names)
-  end
-  
-  def render
-    if @resource and @resource.errors.any?
-      session[:resource_errors] = @resource.errors
-      redirect_to action: :new
-    else
-      super
-    end
   end
   
   def model

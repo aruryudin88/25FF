@@ -10,6 +10,11 @@
 <body>
 <%= render "top_menu" %>
 <%= render "errors" if @resource_errors %>
+<% if flash[:notice] %>
+  <%= content_tag :div, id: 'notice' do %>
+  <%= flash[:notice] %>
+  <% end %>
+<% end %>
 
 <%= yield %>
 

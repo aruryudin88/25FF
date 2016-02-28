@@ -20,10 +20,10 @@ module HasAttachment
       end]
       
       attachments.each do |key, value|
-        format = value.path[/^.+(\.\w+)$/, 1]
+        file_name = "#{result.id.to_s}.#{EXTENTIONS[key]}"
         FileUtils.mv(
           value.path,
-          File.join(UPLOADS_DIR, key.pluralize, "#{result.id}#{format}")
+          File.join(UPLOADS_DIR, key.pluralize, Rails.env, "#{file_name}")
         )
       end if result.valid?
       
@@ -34,7 +34,7 @@ module HasAttachment
   
   def destroy_attachments
     attachments.each do |attachment|
-      FileUtils.rm(attachment)
+      FileUtils.rm(attachment) if File.exist?(attachment)
     end
   end
   
@@ -44,8 +44,8 @@ module HasAttachment
     end.select do |_key, val|
       val
     end.keys.map do |entity_name|
-      extention = EXTENTIONS[entity_name]
-      File.join(UPLOADS_DIR, entity_name.pluralize, "#{self.id}.#{extention}")
+      file_name = "#{self.id.to_s}.#{EXTENTIONS[entity_name]}"
+      File.join(UPLOADS_DIR, entity_name.pluralize, Rails.env, "#{file_name}")
     end
   end
   

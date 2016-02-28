@@ -2,7 +2,12 @@ RSpec.shared_examples 'Attachment' do |file_ext, entity_name, model|
   dir_name = entity_name.pluralize
   let(:random_name) { model.random_value_of(:name) }
   let(:file_path) do
-    "uploads/#{dir_name}/#{model.last.id}#{file_ext}"
+    File.join(
+      model::UPLOADS_DIR,
+      dir_name,
+      Rails.env,
+      "#{model.last.id}.#{file_ext}"
+    )
   end
   model_name = model.name.tableize.singularize
   
@@ -16,13 +21,13 @@ RSpec.shared_examples 'Attachment' do |file_ext, entity_name, model|
     
     attach_file(
       "#{model_name}_#{entity_name}",
-      File.absolute_path("public/test#{file_ext}")
+      File.absolute_path("public/test.#{file_ext}")
     )
     click_button "Create #{model_name}"
   end
   
   after do |example|
-    byebug if example.exception
+    # byebug if example.exception
   end
   
   context "On #{model} creation" do
@@ -51,7 +56,7 @@ end
 { Film => { 'poster' => 'jpg', 'video' => 'avi' } }.each do |model, entities|
   entities.each do |ent, ext|
     RSpec.describe ent.titlecase do
-      it_behaves_like 'Attachment', ".#{ext}", "#{ent}_file", model
+      it_behaves_like 'Attachment', ext, "#{ent}_file", model
     end
   end
 end
