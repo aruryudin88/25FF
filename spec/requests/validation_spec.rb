@@ -3,7 +3,7 @@ RSpec.describe "film creation validation" do
   let(:random_description) { Film.random_value_of(:description) }
   let(:too_long_name) { Film.too_long_random_value_of(:name) }
   let(:too_long_description) { Film.too_long_random_value_of(:description) }
-  let(:created_film) { Film.where("created_at > ?", 1.second.ago).last }
+  let(:created_film) { Film.last }
   let(:success_message) { "Films#create" }
   let(:error_li) { "#error_explanation>ul>li" }
   

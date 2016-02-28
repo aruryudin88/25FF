@@ -20,14 +20,14 @@ ru:
         name: название
         description: описание
         premiere: премьера
-        usa_premiere: премьера в США
         genre: жанр
         running_time: продолжительность
         country: страна
         language: оригинальный язык
         budget: бюджет
         box_office: сборы
-        file_path: путь к файлу
+        video_file: видео-файл
+        poster_file: файл постера
       user:
         name: имя
         surename: фамилия

@@ -20,14 +20,14 @@ en:
         name: name
         description: description
         premiere: premiere
-        usa_premiere: USA premiere
         genre: genre
         running_time: running time
         country: country
         language: original language
         budget: budget
         box_office: box office
-        file_path: file path
+        video_file: video file
+        poster_file: poster file
       user:
         name: name
         surename: surename

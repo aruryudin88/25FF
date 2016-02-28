@@ -18,7 +18,7 @@ class ResourcesController < ApplicationController
   end
 
   def create
-    @resource = model.create resource_params
+    @resource = model.create_with_attachments resource_params
   end
 
   def edit

@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20160227105902) do
   end
 
   create_table "cinematographs_films", id: false, force: :cascade do |t|
-    t.integer "film_id",          null: false
     t.integer "cinematograph_id", null: false
+    t.integer "film_id",          null: false
   end
 
   create_table "directors", force: :cascade do |t|
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20160227105902) do
   end
 
   create_table "directors_films", id: false, force: :cascade do |t|
-    t.integer "film_id",     null: false
     t.integer "director_id", null: false
+    t.integer "film_id",     null: false
   end
 
   create_table "distributors", force: :cascade do |t|
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20160227105902) do
   end
 
   create_table "distributors_films", id: false, force: :cascade do |t|
-    t.integer "film_id",        null: false
     t.integer "distributor_id", null: false
+    t.integer "film_id",        null: false
   end
 
   create_table "editors", force: :cascade do |t|
@@ -59,24 +59,24 @@ ActiveRecord::Schema.define(version: 20160227105902) do
   end
 
   create_table "editors_films", id: false, force: :cascade do |t|
-    t.integer "film_id",   null: false
     t.integer "editor_id", null: false
+    t.integer "film_id",   null: false
   end
 
   create_table "films", force: :cascade do |t|
     t.string   "name",         limit: 70
     t.text     "description"
     t.date     "premiere"
-    t.date     "usa_premiere"
-    t.string   "genre",        limit: 35
+    t.string   "genre",        limit: 70
     t.integer  "running_time"
-    t.string   "country",      limit: 35
-    t.string   "language",     limit: 35
+    t.string   "country",      limit: 70
+    t.string   "language",     limit: 70
     t.money    "budget",                  scale: 2
     t.money    "box_office",              scale: 2
+    t.boolean  "poster_file"
+    t.boolean  "video_file"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.string   "file_path",    limit: 70
   end
 
   create_table "films_musicans", id: false, force: :cascade do |t|
