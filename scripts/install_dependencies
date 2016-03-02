@@ -1,5 +1,2 @@
 #!/bin/bash
-yum install -y ruby
-cd ..
-bundle
-
+../bundle
