@@ -1,2 +1,8 @@
-<h1>Films#show</h1>
-<p>Find me in app/views/films/show.html.erb</p>
+<%= content_tag :div, id: 'show' do %>
+  <% @resource.class.presentative_attribute_names.each do |attribute| %>
+    <%= content_tag :p do %>
+      <%= label_tag @resource.class.human_attribute_name(attribute) %>:
+      <%= @resource.send(attribute) %>
+    <% end %>
+  <% end %>
+<% end %>

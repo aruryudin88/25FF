@@ -1,6 +1,7 @@
 module HasAttachment
-  UPLOADS_DIR = 'uploads'
-  EXTENTIONS = { 'poster_file' => 'jpg', 'video_file' => 'avi' }
+  UPLOADS_DIR = 'public/uploads'
+  EXTENTIONS = { 'poster_file' => %w(jpg), 'video_file' => %w(webm) }
+  CONVERT_LIBS = { 'webm' => 'libvpx' }
   
   def self.included c
     c.extend ClassMethods
@@ -19,28 +20,15 @@ module HasAttachment
         [key, value]
       end]
       
-      attachments.each do |key, value|
-        file_name = "#{result.id.to_s}.#{EXTENTIONS[key]}"
-        FileUtils.mv(
-          value.path,
-          File.join(UPLOADS_DIR, key.pluralize, Rails.env, "#{file_name}")
-        )
-      end if result.valid?
+      result.store_attachments(attachments) if result.valid?
       
       result
     end
-  
   end
-  
-  def destroy_attachments
-    attachments.each do |attachment|
-      FileUtils.rm(attachment) if File.exist?(attachment)
-    end
-  end
-  
-  def attachments
+
+  def attachment_file_paths(type = nil)
     self.attributes.select do |key, _val|
-      key.match(/_file$/)
+      key.match(/#{type}_file$/)
     end.select do |_key, val|
       val
     end.keys.map do |entity_name|
@@ -49,4 +37,32 @@ module HasAttachment
     end
   end
   
+  def destroy_attachments
+    attachment_file_paths.each do |attachment_file_path|
+      FileUtils.rm(attachment_file_path) if File.exist?(attachment_file_path)
+    end
+  end
+
+  def store_attachments attachments
+    attachments.each do |key, value|
+      EXTENTIONS[key].each do |ext|
+        new_path = File.join(
+          UPLOADS_DIR,
+          key.pluralize,
+          Rails.env,
+          "#{self.id}.#{ext}"
+        )
+        case
+        when value.content_type["video/"]
+          options = { video_codec: CONVERT_LIBS[ext] }
+          FFMPEG::Movie.new(value.path).transcode(new_path, options) do |progress|
+            puts progress
+          end
+        else
+          FileUtils.cp(value.path, new_path)
+        end
+        FileUtils.rm(value.path)
+      end
+    end
+  end
 end

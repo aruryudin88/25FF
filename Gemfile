@@ -29,13 +29,14 @@ gem 'browser'
 gem 'dalli', require: 'action_dispatch/middleware/session/dalli_store'
 # Provides a full set of stores (Cache, Session, HTTP Cache) for Ruby on Rails.
 # See the main redis-store readme for general guidelines.
-gem "redis-rails"
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
+gem 'redis-rails'
 # Use Unicorn as the app server
 gem 'unicorn'
+# Simple yet powerful wrapper around the ffmpeg command for reading metadata
+# and transcoding movies.
+gem 'streamio-ffmpeg'
+# Use ActiveModel has_secure_password
+# gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

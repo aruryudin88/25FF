@@ -4,6 +4,8 @@ class ResourcesController < ApplicationController
   end
 
   def show
+    @resource = model.find params[:id]
+    render "#{controller_path}/#{__method__}"
   end
 
   def new
@@ -43,6 +45,10 @@ class ResourcesController < ApplicationController
   end
   
   def model
-    request.path[%r(^/([^/]+).*$), 1].classify.constantize
+    controller_path.classify.constantize
+  end
+  
+  def controller_path
+    request.path[%r(^/([^/]+)), 1]
   end
 end

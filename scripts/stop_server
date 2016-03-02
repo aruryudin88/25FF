@@ -1,0 +1,5 @@
+#!/bin/bash
+for i in `ps awx | pgrep -f ^unicorn`; do
+  kill -9 $i;
+done
+

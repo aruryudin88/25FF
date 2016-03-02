@@ -39,9 +39,20 @@ body { font-family: monospace; margin: 0; margin-top: 56px; font-size: 13px; }
 #locale_box > div { text-align: center; margin-bottom: 5px; }
 form { position: absolute; left: 0; }
 form > p { background: #f1f1f1; border: 1px solid #ebebeb; padding: 10px; }
-#error_explanation{
+#error_explanation {
   padding: 25px;
   background: #58494B;
   color: #E94F64;
-  b{ color: #F4AAB4; }
 }
+#error_explanation > h2{
+  margin: 0;
+}
+#notice {
+  padding: 25px;
+  background: #58494B;
+  color: #E94F64;
+  font-size: 19.5px;
+  font-weight: bold;
+}
+#show p { padding: 10px; margin: 0; }
+#show label { cursor: auto; }

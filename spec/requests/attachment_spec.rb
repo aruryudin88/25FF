@@ -1,10 +1,8 @@
 RSpec.shared_examples 'Attachment' do |file_ext, entity_name, model|
-  dir_name = entity_name.pluralize
-  let(:random_name) { model.random_value_of(:name) }
   let(:file_path) do
     File.join(
       model::UPLOADS_DIR,
-      dir_name,
+      entity_name.pluralize,
       Rails.env,
       "#{model.last.id}.#{file_ext}"
     )
@@ -16,7 +14,7 @@ RSpec.shared_examples 'Attachment' do |file_ext, entity_name, model|
     
     case model_name
     when "film"
-      fill_in 'film[name]', with: random_name
+      fill_in 'film[name]', with: model.random_value_of(:name)
     end
     
     attach_file(
@@ -30,20 +28,23 @@ RSpec.shared_examples 'Attachment' do |file_ext, entity_name, model|
     # byebug if example.exception
   end
   
+  # On Film creation
   context "On #{model} creation" do
     after do
       model.destroy_all
       model.reset_autoincrement
     end
     
-    it "creates #{model_name} in DB and stores file in uploads/#{dir_name}/" do
+    # it stores file in public/uploads/video_files/
+    it "stores file in #{model::UPLOADS_DIR}/#{entity_name.pluralize}/" do
       expect(model.last).to_not be nil
       expect(File).to exist(file_path)
     end
   end
   
   context "On #{model} deletion" do
-    it "removed from uploads/#{dir_name}/ along with #{model_name} from DB" do
+    # removed from public/uploads/video_files/
+    it "removed from #{model::UPLOADS_DIR}/#{entity_name.pluralize}/" do
       path_to_file_that_will_remove = file_path
       model.destroy_all
       model.reset_autoincrement

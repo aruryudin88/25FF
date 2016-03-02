@@ -1,0 +1,3 @@
+<% @resource.attachments(:video).each do |attachment| %>
+<%= video_tag attachment[/^public(.+)$/, 1] %>
+<% end %>
