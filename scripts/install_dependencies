@@ -15,6 +15,3 @@ make
 make install
 cd ..
 rm -r $RUBY_NAME
-cd ..
-bundle
-
