@@ -2,16 +2,3 @@
 RUBY_VERSION_SHORT=2.3
 RUBY_VERSION_LONG=2.3.0
 RUBY_NAME="ruby-$RUBY_VERSION_LONG"
-apt-get update -y
-apt-get install -y wget build-essential bison openssl libreadline6 libreadline6-dev \
-libyaml-dev libxml2-dev libxslt-dev zlib1g zlib1g-dev libssl-dev autoconf \
-libc6-dev ncurses-dev libaprutil1-dev libffi-dev libcurl4-openssl-dev libapr1-dev
-wget "https://cache.ruby-lang.org/pub/ruby/$RUBY_VERSION_SHORT/$RUBY_NAME.tar.gz"
-tar -xvf "$RUBY_NAME.tar.gz"
-rm $_
-cd $RUBY_NAME
-./configure
-make
-make install
-cd ..
-rm -r $RUBY_NAME
